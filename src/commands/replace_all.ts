@@ -65,6 +65,7 @@ export async function replace_commands(
 }
 
 export async function replace_all(opts: ExecuteOptions) {
+  console.log(colors.green('search/replace in files...'));
   const srcBundlePath = opts.current.bundle.replaceAll('.', '/'); // com/mobile
   const destBundlePath = opts.future.bundle.replaceAll('.', '/'); // com/example/mymobile
 
@@ -102,6 +103,6 @@ export async function replace_all(opts: ExecuteOptions) {
   ]);
 
   if (count > 0) {
-    console.log(colors.green(`replace: modified ${count} files\n`));
+    console.log(colors.green(`modified ${count} files\n`));
   }
 }

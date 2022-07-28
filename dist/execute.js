@@ -12,8 +12,8 @@ const execute = async (options) => {
         //await validatePaths(opts);
         await (0, clean_all_1.clean_all)(opts);
         await (0, move_all_1.move_all)(opts);
+        await (0, changeDisplayName_1.changeDisplayName)(opts); // Need to change before generic because sometimes displayName = name
         await (0, replace_all_1.replace_all)(opts);
-        await (0, changeDisplayName_1.changeDisplayName)(opts);
     }
     catch (err) {
         console.error(err);

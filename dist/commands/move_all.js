@@ -50,7 +50,6 @@ async function move_commands(opts, commands) {
     if (opts.current.name === opts.future.name) {
         return;
     }
-    console.log(opts.current.name, opts.future.name);
     let count = 0;
     for (const command of commands) {
         const patterns = (0, patterns_1.filterPatterns)(command.patterns);
@@ -72,6 +71,7 @@ async function move_commands(opts, commands) {
 }
 exports.move_commands = move_commands;
 async function move_all(opts) {
+    console.log(colors_1.default.green('moving files...'));
     const srcBundlePath = opts.current.bundle.replaceAll('.', '/'); // com/mobile
     const destBundlePath = opts.future.bundle.replaceAll('.', '/'); // com/example/mymobile
     await move_commands(opts, [

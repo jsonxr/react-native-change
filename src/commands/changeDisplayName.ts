@@ -3,6 +3,7 @@ import { replace_commands } from './replace_all';
 import colors from 'colors';
 
 export async function changeDisplayName(opts: ExecuteOptions) {
+  console.log(colors.green('change displayName...'));
   if (opts.current.display === opts.future.display) {
     return 0;
   }
@@ -45,6 +46,6 @@ export async function changeDisplayName(opts: ExecuteOptions) {
   ]);
 
   if (count > 0) {
-    console.log(colors.green(`display: modified ${count} files\n`));
+    console.log(colors.green(`modified ${count} files\n`));
   }
 }

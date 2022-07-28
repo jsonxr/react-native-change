@@ -55,6 +55,7 @@ async function replace_commands(dryrun, commands) {
 }
 exports.replace_commands = replace_commands;
 async function replace_all(opts) {
+    console.log(colors_1.default.green('search/replace in files...'));
     const srcBundlePath = opts.current.bundle.replaceAll('.', '/'); // com/mobile
     const destBundlePath = opts.future.bundle.replaceAll('.', '/'); // com/example/mymobile
     const count = await replace_commands(opts.dryrun, [
@@ -87,7 +88,7 @@ async function replace_all(opts) {
         },
     ]);
     if (count > 0) {
-        console.log(colors_1.default.green(`replace: modified ${count} files\n`));
+        console.log(colors_1.default.green(`modified ${count} files\n`));
     }
 }
 exports.replace_all = replace_all;

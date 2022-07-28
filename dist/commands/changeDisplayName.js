@@ -7,6 +7,7 @@ exports.changeDisplayName = void 0;
 const replace_all_1 = require("./replace_all");
 const colors_1 = __importDefault(require("colors"));
 async function changeDisplayName(opts) {
+    console.log(colors_1.default.green('change displayName...'));
     if (opts.current.display === opts.future.display) {
         return 0;
     }
@@ -47,7 +48,7 @@ async function changeDisplayName(opts) {
         },
     ]);
     if (count > 0) {
-        console.log(colors_1.default.green(`display: modified ${count} files\n`));
+        console.log(colors_1.default.green(`modified ${count} files\n`));
     }
 }
 exports.changeDisplayName = changeDisplayName;

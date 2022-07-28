@@ -11,8 +11,8 @@ export const execute = async (options: Options) => {
     //await validatePaths(opts);
     await clean_all(opts);
     await move_all(opts);
+    await changeDisplayName(opts); // Need to change before generic because sometimes displayName = name
     await replace_all(opts);
-    await changeDisplayName(opts);
   } catch (err) {
     console.error(err);
   }

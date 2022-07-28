@@ -60,8 +60,6 @@ export async function move_commands(
     return;
   }
 
-  console.log(opts.current.name, opts.future.name);
-
   let count = 0;
   for (const command of commands) {
     const patterns = filterPatterns(command.patterns);
@@ -84,6 +82,8 @@ export async function move_commands(
 }
 
 export async function move_all(opts: ExecuteOptions) {
+  console.log(colors.green('moving files...'));
+
   const srcBundlePath = opts.current.bundle.replaceAll('.', '/'); // com/mobile
   const destBundlePath = opts.future.bundle.replaceAll('.', '/'); // com/example/mymobile
 
