@@ -12,7 +12,6 @@ async function eachDir(filename, cb) {
         const src = node_path_1.default.join(filename, filePath);
         const file = await (0, utils_1.stat)(src);
         if (!file) {
-            console.error('File not found ', src);
             continue;
         }
         // Depth first so we can rename the folder and not cause problems...
@@ -20,7 +19,11 @@ async function eachDir(filename, cb) {
             await eachDir(src, cb);
         }
         // Call this last so we can rename the file if we want
-        await cb({ folder: filename, filename: filePath, isDirectory: file.isDirectory() });
+        await cb({
+            folder: filename,
+            filename: filePath,
+            isDirectory: file.isDirectory(),
+        });
     }
 }
 exports.eachDir = eachDir;

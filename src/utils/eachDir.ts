@@ -13,7 +13,6 @@ export async function eachDir(filename: string, cb: EachDirCallback) {
     const src = path.join(filename, filePath);
     const file = await stat(src);
     if (!file) {
-      console.error('File not found ', src);
       continue;
     }
 

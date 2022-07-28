@@ -5,7 +5,8 @@ import path from 'path';
 
 export const stat = async (src: string): Promise<Stats | undefined> => {
   try {
-    return await fs.stat(src);
+    const result = await fs.stat(src);
+    return result;
   } catch (err) {} // ignore
 };
 

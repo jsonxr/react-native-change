@@ -4,8 +4,8 @@ import { move_all } from './commands/move_all';
 import { replace_all } from './commands/replace_all';
 import { getExecuteOptions, Options } from './options';
 
-export const execute = async (dir: string, options: Options) => {
-  const opts = await getExecuteOptions(dir, options);
+export const execute = async (options: Options) => {
+  const opts = await getExecuteOptions(options);
 
   try {
     //await validatePaths(opts);

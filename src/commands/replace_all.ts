@@ -52,8 +52,8 @@ export async function replace_commands(
     const patterns = filterPatterns(command.patterns);
     if (patterns.length > 0) {
       // Iterate over the paths first to minimize the open/close of files
-      for (const dir of command.paths) {
-        let replaced = await replace(dir, {
+      for (const filePath of command.paths) {
+        let replaced = await replace(path.join(command.dir, filePath), {
           dryrun,
           patterns,
         });
@@ -70,6 +70,7 @@ export async function replace_all(opts: ExecuteOptions) {
 
   const count = await replace_commands(opts.dryrun, [
     {
+      dir: opts.dir,
       paths: ['ios', 'android', 'app.json', 'package.json'],
       patterns: [
         // com/mobile -> com/example/mymobile (2 files)

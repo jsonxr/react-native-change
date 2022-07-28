@@ -1,3 +1,4 @@
+import 'source-map-support/register';
 import { program } from 'commander';
 import { execute } from './execute';
 import { Options } from './options';
@@ -22,4 +23,5 @@ if (!process.argv.slice(2).length) {
 
 const dir = program.args[0];
 const options = program.opts<Options>();
-execute(dir, options);
+options.dir = dir;
+execute(options);

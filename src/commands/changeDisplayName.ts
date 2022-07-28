@@ -9,9 +9,11 @@ export async function changeDisplayName(opts: ExecuteOptions) {
 
   const count = await replace_commands(opts.dryrun, [
     {
+      dir: opts.dir,
       paths: [
-        `ios/${opts.future.name}/Info.plist`,
-        `ios/${opts.current.name}/Info.plist`,
+        opts.dryrun
+          ? `ios/${opts.current.name}/Info.plist`
+          : `ios/${opts.future.name}/Info.plist`,
       ],
       patterns: [
         {
@@ -21,6 +23,7 @@ export async function changeDisplayName(opts: ExecuteOptions) {
       ],
     },
     {
+      dir: opts.dir,
       paths: ['app.json'],
       patterns: [
         {
@@ -30,6 +33,7 @@ export async function changeDisplayName(opts: ExecuteOptions) {
       ],
     },
     {
+      dir: opts.dir,
       paths: ['android/app/src/main/res/values/strings.xml'],
       patterns: [
         {

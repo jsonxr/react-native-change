@@ -47,17 +47,18 @@ async function move(dir, { dryrun, matcher, replace }) {
 }
 exports.move = move;
 async function move_commands(opts, commands) {
-    if (opts.current.name == opts.future.name) {
+    if (opts.current.name === opts.future.name) {
         return;
     }
+    console.log(opts.current.name, opts.future.name);
     let count = 0;
     for (const command of commands) {
         const patterns = (0, patterns_1.filterPatterns)(command.patterns);
         if (patterns.length > 0) {
             // Iterate over the paths first to minimize the open/close of files
-            for (const dir of command.paths) {
+            for (const filePath of command.paths) {
                 for (const pattern of patterns) {
-                    let moved = await move(dir, {
+                    let moved = await move(node_path_1.default.join(command.dir, filePath), {
                         dryrun: opts.dryrun,
                         matcher: pattern.matcher,
                         replace: pattern.replace,
@@ -75,6 +76,7 @@ async function move_all(opts) {
     const destBundlePath = opts.future.bundle.replaceAll('.', '/'); // com/example/mymobile
     await move_commands(opts, [
         {
+            dir: opts.dir,
             paths: ['ios', 'android'],
             patterns: [
                 // **/com.mobile -> **/com.example.mymobile  {current.bundle} -> {future.bundle}

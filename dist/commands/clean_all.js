@@ -29,7 +29,13 @@ const clean = async (opts, paths) => {
     }
 };
 async function clean_all(opts) {
-    await clean(opts, ['ios/build', 'ios/Pods', 'android/.gradle', 'android/app/build', 'android/build']);
+    await clean(opts, [
+        'ios/build',
+        'ios/Pods',
+        'android/.gradle',
+        'android/app/build',
+        'android/build',
+    ]);
 }
 exports.clean_all = clean_all;
 //# sourceMappingURL=clean_all.js.map

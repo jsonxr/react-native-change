@@ -1,6 +1,7 @@
 import { AppJson, loadAndroidManifest, loadAppJson } from './utils/utils';
 
 export type Options = {
+  dir: string;
   name: string;
   dryrun: boolean;
   display: string;
@@ -37,12 +38,11 @@ export type ExecuteOptions = {
   future: AppConfig;
 };
 export const getExecuteOptions = async (
-  dir: string,
   options: Options
 ): Promise<ExecuteOptions> => {
   // current state
-  const appJson = await loadAppJson(dir);
-  const currentBundle = await loadAndroidManifest(dir);
+  const appJson = await loadAppJson(options.dir);
+  const currentBundle = await loadAndroidManifest(options.dir);
 
   const current: AppConfig = {
     name: appJson.name,
@@ -63,7 +63,7 @@ export const getExecuteOptions = async (
   return {
     dryrun: options.dryrun ?? false,
     ignore: [],
-    dir,
+    dir: options.dir,
     current,
     future,
   };

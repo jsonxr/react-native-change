@@ -7,17 +7,17 @@ exports.changeDisplayName = void 0;
 const replace_all_1 = require("./replace_all");
 const colors_1 = __importDefault(require("colors"));
 async function changeDisplayName(opts) {
-    // const text = `{
-    //   "name": "MyApp",
-    //   "displayName": "My Mobile"
-    // }`.replaceAll(`"displayName": "${opts.current.display}"`, `"displayName": "${opts.future.display}"`);
-    // console.log('text:', text);
     if (opts.current.display === opts.future.display) {
         return 0;
     }
     const count = await (0, replace_all_1.replace_commands)(opts.dryrun, [
         {
-            paths: [`ios/${opts.future.name}/Info.plist`, `ios/${opts.current.name}/Info.plist`],
+            dir: opts.dir,
+            paths: [
+                opts.dryrun
+                    ? `ios/${opts.current.name}/Info.plist`
+                    : `ios/${opts.future.name}/Info.plist`,
+            ],
             patterns: [
                 {
                     matcher: `<string>${opts.current.display}</string>`,
@@ -26,6 +26,7 @@ async function changeDisplayName(opts) {
             ],
         },
         {
+            dir: opts.dir,
             paths: ['app.json'],
             patterns: [
                 {
@@ -35,6 +36,7 @@ async function changeDisplayName(opts) {
             ],
         },
         {
+            dir: opts.dir,
             paths: ['android/app/src/main/res/values/strings.xml'],
             patterns: [
                 {

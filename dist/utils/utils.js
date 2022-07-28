@@ -32,7 +32,8 @@ const promises_1 = __importStar(require("fs/promises"));
 const path_1 = __importDefault(require("path"));
 const stat = async (src) => {
     try {
-        return await promises_1.default.stat(src);
+        const result = await promises_1.default.stat(src);
+        return result;
     }
     catch (err) { } // ignore
 };
@@ -68,7 +69,9 @@ const getBundlePath = (bundleId) => {
 };
 exports.getBundlePath = getBundlePath;
 const loadAppJson = async (dir) => {
-    const text = await (0, promises_1.readFile)(path_1.default.join(dir, 'app.json'), { encoding: 'utf-8' });
+    const text = await (0, promises_1.readFile)(path_1.default.join(dir, 'app.json'), {
+        encoding: 'utf-8',
+    });
     return JSON.parse(text);
 };
 exports.loadAppJson = loadAppJson;

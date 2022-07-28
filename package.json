@@ -1,6 +1,6 @@
 {
   "name": "react-native-change",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Rename a react native application",
   "bin": {
     "react-native-change": "react-native-change"
@@ -17,6 +17,7 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.12",
     "colors": "^1.4.0",
-    "commander": "^9.4.0"
+    "commander": "^9.4.0",
+    "source-map-support": "^0.5.21"
   }
 }

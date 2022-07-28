@@ -5,6 +5,7 @@ export type Pattern = {
 };
 
 export type PatternCommand = {
+  dir: string;
   paths: string[];
   patterns: Pattern[];
 };

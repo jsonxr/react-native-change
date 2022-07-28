@@ -11,10 +11,10 @@ const getNewName = (options, appConfig) => {
     }
     return name.replace(/\s/g, '');
 };
-const getExecuteOptions = async (dir, options) => {
+const getExecuteOptions = async (options) => {
     // current state
-    const appJson = await (0, utils_1.loadAppJson)(dir);
-    const currentBundle = await (0, utils_1.loadAndroidManifest)(dir);
+    const appJson = await (0, utils_1.loadAppJson)(options.dir);
+    const currentBundle = await (0, utils_1.loadAndroidManifest)(options.dir);
     const current = {
         name: appJson.name,
         display: appJson.displayName,
@@ -32,7 +32,7 @@ const getExecuteOptions = async (dir, options) => {
     return {
         dryrun: options.dryrun ?? false,
         ignore: [],
-        dir,
+        dir: options.dir,
         current,
         future,
     };

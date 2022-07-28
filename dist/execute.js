@@ -6,8 +6,8 @@ const clean_all_1 = require("./commands/clean_all");
 const move_all_1 = require("./commands/move_all");
 const replace_all_1 = require("./commands/replace_all");
 const options_1 = require("./options");
-const execute = async (dir, options) => {
-    const opts = await (0, options_1.getExecuteOptions)(dir, options);
+const execute = async (options) => {
+    const opts = await (0, options_1.getExecuteOptions)(options);
     try {
         //await validatePaths(opts);
         await (0, clean_all_1.clean_all)(opts);
